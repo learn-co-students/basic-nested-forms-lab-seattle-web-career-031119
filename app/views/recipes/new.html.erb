@@ -1,1 +1,24 @@
+<!-- # ERB COMMENT BLOCK: will comment out HTML and Ruby
+<% if false %>
 <%= render 'form', recipe: @recipe %>
+<% end %>
+-->
+
+<%= form_for @recipe do |f| %>
+  <%= f.label :recipe %><br>
+  <br>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br>
+  <br>
+  <%= f.label :ingredients %><br>
+  <br>
+  <%= f.fields_for :ingredients do |ingr| %>
+    <%= ingr.label :name %>
+    <%= ingr.text_field :name %><br>
+
+    <%= ingr.label :quantity %>
+    <%= ingr.text_field :quantity %><br>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
